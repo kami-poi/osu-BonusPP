@@ -70,12 +70,8 @@ jobs:
         with:
           dotnet-version: 8.0.x
       
-      # Restore the application to populate the obj folder with RuntimeIdentifiers
-      - name: Restore the application
-        run: dotnet restore
-      
       - name: Publish
-        run: dotnet publish BonusPP --nologo --no-restore -c Release --self-contained ${{ matrix.self_contained }} -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true -o ./Publish && Rename-Item -Path ./Publish/BonusPP.exe -NewName $output_name
+        run: dotnet publish BonusPP --nologo -c Release --self-contained ${{ matrix.self_contained }} -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true -o ./Publish && Rename-Item -Path ./Publish/BonusPP.exe -NewName $output_name
         env:
           output_name: BonusPP${{ matrix.self_contained == true && '-standalone' || '' }}-${{ github.ref.name }}.exe
       
