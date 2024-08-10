@@ -79,4 +79,4 @@ jobs:
       - name: Upload release
         uses: jaywcjlove/github-action-upload-assets@main
         with:
-          asset-path: '["D:\a\osu-BonusPP\osu-BonusPP\Publish\*.exe"]'
+          asset-path: '["D:/a/osu-BonusPP/osu-BonusPP/Publish/*.exe"]'
