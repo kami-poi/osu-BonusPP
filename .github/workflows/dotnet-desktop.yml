@@ -73,7 +73,7 @@ jobs:
       - name: Publish
         run: dotnet publish BonusPP --nologo -c Release --self-contained ${{ matrix.self_contained }} -p:PublishSingleFile=true -o ./Publish && Rename-Item -Path ./Publish/BonusPP.exe -NewName $output_name
         env:
-          output_name: BonusPP${{ matrix.self_contained == true && '-standalone' || '' }}-${{ github.ref }}.exe
+          output_name: BonusPP${{ matrix.self_contained == true && '-standalone' || '' }}-$GITHUB_REF_NAME.exe
       
       # Upload the executable files: https://github.com/marketplace/actions/upload-a-build-artifact
       - name: Upload release
